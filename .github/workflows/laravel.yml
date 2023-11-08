@@ -54,5 +54,5 @@ jobs:
           touch database/database.sqlite
       - name: Execute tests (Unit and Feature tests) via PHPUnit
         run: |
-          php artisan migrate
+          php artisan migrate:fresh --seed
           vendor/bin/phpunit
