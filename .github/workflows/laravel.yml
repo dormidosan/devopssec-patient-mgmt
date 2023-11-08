@@ -11,7 +11,17 @@ jobs:
 
     runs-on: ubuntu-latest
 
-
+    services:
+      mysql:
+        image: mysql:8.0.34-oracle
+        env:
+          MYSQL_USER: user
+          MYSQL_PASSWORD: secret
+          MYSQL_DATABASE: laravel
+          MYSQL_ROOT_PASSWORD: secret
+        ports:
+          - 3306:3306
+        options: --health-cmd="mysqladmin ping" --health-interval=10s --health-timeout=5s --health-retries=3
 
 
     steps:
@@ -43,12 +53,6 @@ jobs:
           mkdir -p database
           touch database/database.sqlite
       - name: Execute tests (Unit and Feature tests) via PHPUnit
-        env:
-          DB_DATABASE: testdatabase
-          DB_PORT: 3306
-          DB_USERNAME: root
-          DB_PASSWORD: secret
-          DB_HOST: 127.0.0.1
         run: |
           php artisan migrate
           vendor/bin/phpunit
