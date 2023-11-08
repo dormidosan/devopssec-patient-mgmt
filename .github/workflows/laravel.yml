@@ -48,7 +48,7 @@ jobs:
         run: |
           php artisan --version
           php --version
-      - name: Create Database (OBSOLETE)
+      - name: Create Database (OBSOLETES)
         run: |
           mkdir -p database
           touch database/database.sqlite
