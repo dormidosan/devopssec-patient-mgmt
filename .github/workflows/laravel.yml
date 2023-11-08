@@ -19,9 +19,8 @@ jobs:
           MYSQL_PASSWORD: secret
           MYSQL_DATABASE: testdatabase
           MYSQL_ROOT_PASSWORD: root
-          DB_PORT: ${{ job.services.mysql.ports[3306] }}
         ports:
-          - 33306:3306
+          - 3306:3306
         options: --health-cmd="mysqladmin ping" --health-interval=10s --health-timeout=5s --health-retries=3
 
 
@@ -34,7 +33,7 @@ jobs:
         run: mysql -V
       - name: Verify MySQL connection
         run: |
-          mysql --host 127.0.0.1 --port ${{ job.services.mysql.ports['3306'] }} -uuser -psecret -e "SHOW DATABASES"
+          mysql --host 127.0.0.1 --port 3306 -uuser -psecret -e "SHOW DATABASES"
       - name: Copy .env
         run: php -r "file_exists('.env') || copy('.env.example', '.env');"
       - name: Install Dependencies
@@ -60,6 +59,7 @@ jobs:
           DB_PORT: 3306
           DB_USER: root
           DB_PASSWORD: secret
+          DATABASE_ENDPOINT: 127.0.0.1
         run: |
           php artisan migrate
           vendor/bin/phpunit
