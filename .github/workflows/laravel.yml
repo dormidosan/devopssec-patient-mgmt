@@ -45,7 +45,7 @@ jobs:
       - name: Install Node.js npm dependencies
         run: |
           npm install
-          npm build
+          npm run build
       - name: Check files
         run: ls -a
       - name: check php version
