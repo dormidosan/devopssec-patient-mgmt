@@ -42,6 +42,10 @@ jobs:
         run: php artisan key:generate
       - name: Directory Permissions
         run: chmod -R 777 storage bootstrap/cache
+      - name: Install dependencies
+        run: npm install
+      - name: Compile assets
+        run: npm run dev
       - name: Check files
         run: ls -a
       - name: check php version
@@ -55,4 +59,5 @@ jobs:
       - name: Execute tests (Unit and Feature tests) via PHPUnit
         run: |
           php artisan migrate:fresh --seed
+          mysql --host 127.0.0.1 --port 3306 -uuser -psecret -e "SELECT * FROM users \G"
           vendor/bin/phpunit
