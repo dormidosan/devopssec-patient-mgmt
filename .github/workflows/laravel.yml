@@ -58,5 +58,5 @@ jobs:
       - name: Execute tests (Unit and Feature tests) via PHPUnit
         run: |
           php artisan migrate:fresh --seed
-          mysql --host 127.0.0.1 --port 3306 -uuser -psecret -e "SELECT * FROM users \G"
+          mysql --host 127.0.0.1 --port 3306 -uuser -psecret -D laravel -e "SELECT * FROM users \G"
           vendor/bin/phpunit
