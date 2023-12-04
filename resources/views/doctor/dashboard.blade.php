@@ -46,7 +46,6 @@
             'use strict';
 
             const dataTableExample = $('#dataTableExample');
-
             $(function() {
                 dataTableExample.DataTable({
                     "aLengthMenu": [
