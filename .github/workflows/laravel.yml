@@ -65,3 +65,5 @@ jobs:
           php artisan migrate:fresh --seed
           mysql --host 127.0.0.1 --port 3306 -uuser -psecret -D laravel -e "SELECT * FROM users \G"
           vendor/bin/phpunit
+      - name: Run Static Analysis
+        run: vendor/bin/phpstan  analyze  --memory-limit=2G
