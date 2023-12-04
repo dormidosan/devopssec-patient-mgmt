@@ -10,7 +10,7 @@
 
         <nav class="page-breadcrumb">
             <ol class="breadcrumb">
-            CHANGE TITTLE
+            CHANGE TITTLE v2
             </ol>
         </nav>
 
