@@ -2,7 +2,7 @@
 
 @section('custom-css')
     <!-- Plugin css for this page -->
-    <link rel="stylesheet" href="{{asset('../../../assets/vendors/datatables.net-bs5/dataTables.bootstrap5.css')}}">
+    <link rel="stylesheet" href="{{asset('assets/vendors/datatables.net-bs5/dataTables.bootstrap5.css')}}">
 @endsection
 
 @section('main')
@@ -35,8 +35,8 @@
 
 
 @section('libraries')
-    <script src="{{ asset('../assets/vendors/datatables.net/jquery.dataTables.js')}}" ></script>
-    <script src="{{ asset('../../../assets/vendors/datatables.net-bs5/dataTables.bootstrap5.js')}}"></script>
+    <script src="{{ asset('assets/vendors/datatables.net/jquery.dataTables.js')}}" ></script>
+    <script src="{{ asset('assets/vendors/datatables.net-bs5/dataTables.bootstrap5.js')}}"></script>
 @endsection
 
 

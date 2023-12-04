@@ -18,3 +18,8 @@ yarn-error.log
 /.idea
 /.vscode
 /ignorefiles
+nginx
+.dockerignore
+.env.example.docker
+docker-compose.yml
+Dockerfile
