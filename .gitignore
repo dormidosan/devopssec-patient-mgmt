@@ -19,8 +19,9 @@ yarn-error.log
 /.vscode
 /ignorefiles
 /nginx
+*.zip
 .dockerignore
 .env.example.docker
 docker-compose.yml
 Dockerfile
-*.zip
+*.neon
