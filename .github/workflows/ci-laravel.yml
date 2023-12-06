@@ -68,6 +68,7 @@ jobs:
         run: |
           mysql --host 127.0.0.1 --port 3306 -uuser -psecret -D laravel -e "SELECT * FROM users \G"
           vendor/bin/phpunit --coverage-clover=coverage.xml
+      #External file
       - uses: pCYSl5EDgo/cat@master
         id: filing
         with:
@@ -75,5 +76,11 @@ jobs:
       - run: echo $mycustomfile
         env:
           TEXT: ${{ steps.filing.outputs.mycustomfile }}
+      #External file
       - name: Run Static Analysis
         run: vendor/bin/phpstan  analyze  --memory-limit=2G --no-progress
+      - name: SonarCloud Scan
+        uses: SonarSource/sonarcloud-github-action@master
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          SONAR_TOKEN: ${{ secrets.SONARCLOUD_TOKEN }}
