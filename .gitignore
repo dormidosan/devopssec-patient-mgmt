@@ -24,4 +24,3 @@ yarn-error.log
 .env.example.docker
 docker-compose.yml
 Dockerfile
-*.neon
