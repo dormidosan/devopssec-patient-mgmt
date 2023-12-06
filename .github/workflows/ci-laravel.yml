@@ -25,9 +25,11 @@ jobs:
 
 
     steps: #The shivammathur can be changed too.
-      - uses: shivammathur/setup-php@15c43e89cdef867065b0213be354c2841860869e
+      # uses: shivammathur/setup-php@15c43e89cdef867065b0213be354c2841860869e
+      - uses: shivammathur/setup-php@v2
         with:
           php-version: '8.2'
+          extensions: :php_psr
       - uses: actions/checkout@v3
       - name: check mysql version #Used only to test the file
         run: mysql -V
@@ -59,9 +61,9 @@ jobs:
           mkdir -p database
           touch database/database.sqlite
       - name: Run Migrations
+        # The php artisan migrate:fresh --seed can be run before, but keep here as it works too.
         run: php artisan migrate:fresh --seed
       - name: Execute tests (Unit and Feature tests) via PHPUnit
-        # The php artisan migrate:fresh --seed can be run before, but keep here as it works too.
         #There's no need to "SELECT * FROM users". Kept as test purposes.
         run: |
           mysql --host 127.0.0.1 --port 3306 -uuser -psecret -D laravel -e "SELECT * FROM users \G"
