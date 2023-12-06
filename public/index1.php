@@ -6,7 +6,7 @@
 	$password = $_SERVER['RDS_PASSWORD'];
 	$dbname = $_SERVER['RDS_DB_NAME'];
 
-	// Create connection
+	// Create connection LETS see
 	$conn = new mysqli($servername, $username, $password, $dbname);
 
 	// Check connection
@@ -23,5 +23,5 @@
     foreach ($env as $key => $value) {
         echo "$key: $value <br>";
     }
-	
+
 ?>
