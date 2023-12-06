@@ -29,7 +29,7 @@ jobs:
       - uses: shivammathur/setup-php@v2
         with:
           php-version: '8.2'
-          extensions: :php_psr
+          extensions: :php_psr #Fix Fatal error: Declaration of Monolog\Logger::emergency
       - uses: actions/checkout@v3
       - name: check mysql version #Used only to test the file
         run: mysql -V
@@ -67,6 +67,13 @@ jobs:
         #There's no need to "SELECT * FROM users". Kept as test purposes.
         run: |
           mysql --host 127.0.0.1 --port 3306 -uuser -psecret -D laravel -e "SELECT * FROM users \G"
-          vendor/bin/phpunit
+          vendor/bin/phpunit --coverage-clover=coverage.xml
+      - uses: pCYSl5EDgo/cat@master
+        id: filing
+        with:
+          path: coverage.xml
+      - run: echo $TEXT
+        env:
+          TEXT: ${{ steps.filing.outputs.text }}
       - name: Run Static Analysis
         run: vendor/bin/phpstan  analyze  --memory-limit=2G --no-progress
