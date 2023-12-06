@@ -72,8 +72,8 @@ jobs:
         id: filing
         with:
           path: coverage.xml
-      - run: echo $TEXT
+      - run: echo $mycustomfile
         env:
-          TEXT: ${{ steps.filing.outputs.text }}
+          TEXT: ${{ steps.filing.outputs.mycustomfile }}
       - name: Run Static Analysis
         run: vendor/bin/phpstan  analyze  --memory-limit=2G --no-progress
