@@ -58,11 +58,12 @@ jobs:
         run: |
           mkdir -p database
           touch database/database.sqlite
+      - name: Run Migrations
+        run: php artisan migrate:fresh --seed
       - name: Execute tests (Unit and Feature tests) via PHPUnit
         # The php artisan migrate:fresh --seed can be run before, but keep here as it works too.
         #There's no need to "SELECT * FROM users". Kept as test purposes.
         run: |
-          php artisan migrate:fresh --seed
           mysql --host 127.0.0.1 --port 3306 -uuser -psecret -D laravel -e "SELECT * FROM users \G"
           vendor/bin/phpunit
       - name: Run Static Analysis
