@@ -73,7 +73,7 @@ jobs:
         id: filing
         with:
           path: coverage.xml
-      - run: echo $mycustomfile
+      - run: echo $TEXT
         env:
           TEXT: ${{ steps.filing.outputs.mycustomfile }}
       #External file
