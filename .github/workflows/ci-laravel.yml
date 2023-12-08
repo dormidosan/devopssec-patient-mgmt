@@ -1,4 +1,4 @@
-name: Laravel
+name: CI-Laravel
 #CHECK PREVIOUS PUSH TO GET THE CONFIG VARIABLES FOR MYSQL
 on:
   push:
@@ -10,6 +10,11 @@ jobs:
   laravel-tests:
 
     runs-on: ubuntu-latest # Like Docker.
+    env:
+      APP_URL: "http://127.0.0.1:8000"
+      DB_USERNAME: root
+      DB_PASSWORD: root
+      MAIL_MAILER: log
 
     services:
       mysql:
@@ -41,7 +46,7 @@ jobs:
       - name: Copy .env
         run: php -r "file_exists('.env') || copy('.env.example', '.env');"
       - name: Install Dependencies
-        run: composer install -q --no-ansi --no-interaction --no-scripts --no-progress --prefer-dist
+        run: composer install --no-progress --prefer-dist --optimize-autoloader
       - name: Generate key
         run: php artisan key:generate
       - name: Directory Permissions
@@ -58,10 +63,28 @@ jobs:
         run: |
           php artisan --version
           php --version
-      - name: Create Database #Not needed, but still here as an example
-        run: |
-          mkdir -p database
-          touch database/database.sqlite
+      #Start automated tests
+      - name: Upgrade Chrome Driver
+        run: php artisan dusk:chrome-driver --detect
+      - name: Start Chrome Driver
+        run: ./vendor/laravel/dusk/bin/chromedriver-linux &
+      - name: Run Laravel Server
+        run: php artisan serve --no-reload &
+      - name: Run Dusk Tests
+        run: php artisan dusk
+      - name: Upload Screenshots
+        if: failure()
+        uses: actions/upload-artifact@v2
+        with:
+          name: screenshots
+          path: tests/Browser/screenshots
+      - name: Upload Console Logs
+        if: failure()
+        uses: actions/upload-artifact@v2
+        with:
+          name: console
+          path: tests/Browser/console
+      #Finish automated tests
       - name: Run Migrations
         # The php artisan migrate:fresh --seed can be run before, but keep here as it works too.
         run: php artisan migrate:fresh --seed
