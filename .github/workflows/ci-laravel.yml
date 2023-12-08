@@ -12,17 +12,17 @@ jobs:
     runs-on: ubuntu-latest # Like Docker.
     env:
       APP_URL: "http://127.0.0.1:8000"
-      DB_USERNAME: root
-      DB_PASSWORD: root
+      DB_USERNAME: user
+      DB_PASSWORD: secret
       MAIL_MAILER: log
 
     services:
       mysql:
         image: mysql:8.0.34-oracle #Using the same as I'm using in Docker.
         env: #Setting the var for MySQL.
+          MYSQL_DATABASE: laravel
           MYSQL_USER: user
           MYSQL_PASSWORD: secret
-          MYSQL_DATABASE: laravel
           MYSQL_ROOT_PASSWORD: secret
         ports: #I can use the same port, but can be changed.
           - 3306:3306
