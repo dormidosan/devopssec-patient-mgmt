@@ -64,6 +64,9 @@ jobs:
         run: |
           php artisan --version
           php --version
+      - name: Run Migrations
+        # The php artisan migrate:fresh --seed can be run before, but keep here as it works too.
+        run: php artisan migrate:fresh --seed
       #Start automated tests
       - name: Upgrade Chrome Driver
         run: php artisan dusk:chrome-driver --detect
@@ -86,9 +89,6 @@ jobs:
           name: console
           path: tests/Browser/console
       #Finish automated tests
-      - name: Run Migrations
-        # The php artisan migrate:fresh --seed can be run before, but keep here as it works too.
-        run: php artisan migrate:fresh --seed
       - name: Check data DB
         run: mysql --host 127.0.0.1 --port 3306 -uuser -psecret -D laravel -e "SELECT * FROM users \G"
         #There's no need to "SELECT * FROM users". Kept as test purposes.
