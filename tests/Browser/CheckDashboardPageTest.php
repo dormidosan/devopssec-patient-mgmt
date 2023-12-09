@@ -43,8 +43,6 @@ class CheckDashboardPageTest extends DuskTestCase
             $browser
                 ->type('input[type="search"]','Noyola')
                 ->assertSee('Sanchez');
-
-
             //->assertSee('PATIENT RECORDS');
         });
     }
