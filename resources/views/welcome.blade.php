@@ -49,7 +49,7 @@
                                 </div>
 
                                 <h2 class="mt-6 text-xl font-semibold text-gray-900 dark:text-white">
-                                    CI/CD WORKING!!! TEST SC v13 Documentation
+                                    CI/CD WORKING!!! TEST SC v14 Documentation
                                 </h2>
 
                                 <p class="mt-4 text-gray-500 dark:text-gray-400 text-sm leading-relaxed">
