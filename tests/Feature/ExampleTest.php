@@ -22,6 +22,7 @@ class ExampleTest extends TestCase
     public function test_load_patients_index(): void
     {
         $user = User::factory()->create();
+        $user->role = 'doctor';
 
         $response = $this->actingAs($user)->get('/patients');
 
