@@ -14,12 +14,12 @@ class DatabaseSeeder extends Seeder
     {
         $this->call(UsersTableSeeder::class);
 
-        //\App\Models\User::factory(10)->create();
+        \App\Models\User::factory(10)->create();
 
-        //\App\Models\Patient::factory(10)->create();
+        \App\Models\Patient::factory(10)->create();
 
-        //\App\Models\Drug::factory(20)->create();
-        //\App\Models\Disease::factory(200)->create();
+        \App\Models\Drug::factory(20)->create();
+        \App\Models\Disease::factory(200)->create();
 
         // \App\Models\User::factory()->create([
         //     'name' => 'Test User',
