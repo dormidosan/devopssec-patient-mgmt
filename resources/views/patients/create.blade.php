@@ -111,7 +111,7 @@
                                     </div>
                                 </div><!-- Col -->
                             </div><!-- Row -->
-                        <button type="submit" class="btn btn-primary">Create Patient</button>
+                        <button dusk="btn-create-patient" type="submit" class="btn btn-primary">Create Patient</button>
                         </form>
                     </div>
                 </div>

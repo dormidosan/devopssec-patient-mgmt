@@ -2,7 +2,7 @@
 
 @section('custom-css')
     <!-- Plugin css for this page -->
-    <link rel="stylesheet" href="{{asset('../../../assets/vendors/datatables.net-bs5/dataTables.bootstrap5.css')}}">
+    <link rel="stylesheet" href="{{asset('assets/vendors/datatables.net-bs5/dataTables.bootstrap5.css')}}">
 @endsection
 
 @section('main')
@@ -10,7 +10,7 @@
     <div class="page-content">
 
         <nav class="page-breadcrumb">
-            <a href="{{route('patients.create')}}" class="btn btn-inverse-success">Insert patient </a>
+            <a dusk="btn-insert-patient" href="{{route('patients.create')}}" class="btn btn-inverse-success">Insert patient </a>
 
         </nav>
 
@@ -71,8 +71,8 @@
 
 
 @section('libraries')
-    <script src="{{ asset('../assets/vendors/datatables.net/jquery.dataTables.js')}}" ></script>
-    <script src="{{ asset('../../../assets/vendors/datatables.net-bs5/dataTables.bootstrap5.js')}}"></script>
+    <script src="{{ asset('assets/vendors/datatables.net/jquery.dataTables.js')}}" ></script>
+    <script src="{{ asset('assets/vendors/datatables.net-bs5/dataTables.bootstrap5.js')}}"></script>
 @endsection
 
 

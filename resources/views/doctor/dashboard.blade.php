@@ -18,7 +18,7 @@
             <div class="col-md-12 grid-margin stretch-card">
                 <div class="card">
                     <div class="card-body">
-                        <h6 class="card-title">Patient Records</h6>
+                        <h6 class="card-title">This is dashboard</h6>
                         <div class="table-responsive">
                             Welcome Doctor!
                         </div>
