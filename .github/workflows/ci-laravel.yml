@@ -67,6 +67,27 @@ jobs:
       - name: Run Migrations
         # The php artisan migrate:fresh --seed can be run before, but keep here as it works too.
         run: php artisan migrate:fresh --seed
+      - name: Check data DB
+        run: mysql --host 127.0.0.1 --port 3306 -uuser -psecret -D laravel -e "SELECT * FROM users \G"
+        #There's no need to "SELECT * FROM users". Kept as test purposes.
+      - name: Execute tests (Unit and Feature tests) via PHPUnit
+        run: vendor/bin/phpunit --coverage-clover=coverage.xml
+      #External file
+      - uses: pCYSl5EDgo/cat@master
+        id: filing
+        with:
+          path: coverage.xml
+      - run: echo $TEXT
+        env:
+          TEXT: ${{ steps.filing.outputs.mycustomfile }}
+      #External file
+      - name: Run Static Analysis
+        run: vendor/bin/phpstan  analyze  --memory-limit=2G --no-progress
+      - name: SonarCloud Scan
+        uses: SonarSource/sonarcloud-github-action@master
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          SONAR_TOKEN: ${{ secrets.SONARCLOUD_TOKEN }}
       #Start automated tests
       - name: Upgrade Chrome Driver
         run: php artisan dusk:chrome-driver --detect
@@ -89,24 +110,3 @@ jobs:
           name: console
           path: tests/Browser/console
       #Finish automated tests
-      - name: Check data DB
-        run: mysql --host 127.0.0.1 --port 3306 -uuser -psecret -D laravel -e "SELECT * FROM users \G"
-        #There's no need to "SELECT * FROM users". Kept as test purposes.
-      - name: Execute tests (Unit and Feature tests) via PHPUnit
-        run: vendor/bin/phpunit --coverage-clover=coverage.xml
-      #External file
-      - uses: pCYSl5EDgo/cat@master
-        id: filing
-        with:
-          path: coverage.xml
-      - run: echo $TEXT
-        env:
-          TEXT: ${{ steps.filing.outputs.mycustomfile }}
-      #External file
-      - name: Run Static Analysis
-        run: vendor/bin/phpstan  analyze  --memory-limit=2G --no-progress
-      - name: SonarCloud Scan
-        uses: SonarSource/sonarcloud-github-action@master
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          SONAR_TOKEN: ${{ secrets.SONARCLOUD_TOKEN }}
