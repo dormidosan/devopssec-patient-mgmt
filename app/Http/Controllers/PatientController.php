@@ -25,14 +25,13 @@ class PatientController extends Controller
      */
     public function create(): View
     {
-
         return view('patients.create');
     }
 
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request) // :requestResponse
+    public function store(Request $request): RedirectResponse // :requestResponse
     {
         $validatedData = $request->validate([
             'first_name' => 'required',
