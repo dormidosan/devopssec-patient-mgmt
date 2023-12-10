@@ -23,9 +23,40 @@ class ExampleTest extends TestCase
     {
         $user = User::factory()->create();
         $user->role = 'doctor';
-
         $response = $this->actingAs($user)->get('/patients');
-
         $response->assertStatus(200);
     }
+
+    public function test_load_diseases_index(): void
+    {
+        $user = User::factory()->create();
+        $user->role = 'doctor';
+        $response = $this->actingAs($user)->get('/diseases');
+        $response->assertStatus(200);
+    }
+
+    public function test_load_drugs_index(): void
+    {
+        $user = User::factory()->create();
+        $user->role = 'doctor';
+        $response = $this->actingAs($user)->get('/drugs');
+        $response->assertStatus(200);
+    }
+
+    public function test_load_doctor_dashboard(): void
+    {
+        $user = User::factory()->create();
+        $user->role = 'doctor';
+        $response = $this->actingAs($user)->get('/doctor/dashboard');
+        $response->assertStatus(200);
+    }
+
+    public function test_load_admin_dashboard(): void
+    {
+        $user = User::factory()->create();
+        $user->role = 'admin';
+        $response = $this->actingAs($user)->get('/admin/dashboard');
+        $response->assertStatus(200);
+    }
+
 }

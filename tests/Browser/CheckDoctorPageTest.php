@@ -81,4 +81,7 @@ class CheckDoctorPageTest extends DuskTestCase
 
         });
     }
+
+
+
 }
