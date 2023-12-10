@@ -7,7 +7,7 @@ use Illuminate\Foundation\Testing\DatabaseMigrations;
 use Laravel\Dusk\Browser;
 use Tests\DuskTestCase;
 
-class CheckDashboardPageTest extends DuskTestCase
+class CheckDoctorPageTest extends DuskTestCase
 {
     protected static $migrationRun = false;
 
