@@ -2,7 +2,7 @@
 
 @section('custom-css')
     <!-- Plugin css for this page -->
-    <link rel="stylesheet" href="{{asset('../../../assets/vendors/datatables.net-bs5/dataTables.bootstrap5.css')}}">
+    <link rel="stylesheet" href="{{asset('assets/vendors/datatables.net-bs5/dataTables.bootstrap5.css')}}">
 @endsection
 
 @section('main')
@@ -10,7 +10,7 @@
     <div class="page-content">
 
         <nav class="page-breadcrumb">
-            <a href="{{route('drugs.create')}}" class="btn btn-inverse-success">Insert Drug </a>
+            <a href="#" class="btn btn-inverse-success">Insert Drug </a>
 
         </nav>
 
@@ -36,13 +36,11 @@
                                         <td>{{Str::limit($drug->composition, 25) }}</td>
                                         <td>{{$drug->manufacture }}</td>
                                         <td>
-                                            <a href="{{ route('drugs.show', $drug) }}" class="btn btn-inverse-primary">Show</a>
-                                            <a href="{{ route('drugs.edit', $drug) }}" class="btn btn-inverse-warning">Edit</a>
-                                            <form action="{{ route('drugs.destroy', $drug) }}" method="POST" style="display: inline;">
-                                                @csrf
-                                                @method('DELETE')
+                                            <a href="#" class="btn btn-inverse-primary">Show</a>
+                                            <a href="#" class="btn btn-inverse-warning">Edit</a>
+
                                                 <button type="submit" class="btn btn-inverse-danger" onclick="return confirm('Are you sure you want to delete this drug?')">Delete</button>
-                                            </form>
+
                                         </td>
                                     </tr>
                                 @endforeach

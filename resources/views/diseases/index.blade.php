@@ -2,7 +2,7 @@
 
 @section('custom-css')
     <!-- Plugin css for this page -->
-    <link rel="stylesheet" href="{{asset('../../../assets/vendors/datatables.net-bs5/dataTables.bootstrap5.css')}}">
+    <link rel="stylesheet" href="{{asset('assets/vendors/datatables.net-bs5/dataTables.bootstrap5.css')}}">
 @endsection
 
 @section('main')
@@ -10,7 +10,7 @@
     <div class="page-content">
 
         <nav class="page-breadcrumb">
-            <a href="{{route('diseases.create')}}" class="btn btn-inverse-success">Insert patient </a>
+            <a href="#" class="btn btn-inverse-success">Insert disease </a>
 
         </nav>
 
@@ -18,7 +18,7 @@
             <div class="col-md-12 grid-margin stretch-card">
                 <div class="card">
                     <div class="card-body">
-                        <h6 class="card-title">Patient Records</h6>
+                        <h6 class="card-title">Diseases Records</h6>
                         <div class="table-responsive">
                             <table id="dataTableExample" class="table">
                                 <thead>
@@ -36,13 +36,11 @@
                                         <td>{{$disease->duration }}</td>
                                         <td>{{$disease->vector }}</td>
                                         <td>
-                                            <a href="{{ route('diseases.show', $disease) }}" class="btn btn-inverse-primary">Show</a>
-                                            <a href="{{ route('diseases.edit', $disease) }}" class="btn btn-inverse-warning">Edit</a>
-                                            <form action="{{ route('diseases.destroy', $disease) }}" method="POST" style="display: inline;">
-                                                @csrf
-                                                @method('DELETE')
-                                                <button type="submit" class="btn btn-inverse-danger" onclick="return confirm('Are you sure you want to delete this disease?')">Delete</button>
-                                            </form>
+                                            <a href="#" class="btn btn-inverse-primary">Show</a>
+                                            <a href="#" class="btn btn-inverse-warning">Edit</a>
+
+                                            <button type="submit" class="btn btn-inverse-danger" onclick="return confirm('Are you sure you want to delete this disease?')">Delete</button>
+
                                         </td>
                                     </tr>
                                 @endforeach

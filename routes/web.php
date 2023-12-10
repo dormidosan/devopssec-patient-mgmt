@@ -53,10 +53,7 @@ Route::middleware(['auth', 'role:doctor'])->group(function () {
 
 
 Route::middleware(['auth', 'role:doctor'])->group(function () {
-    /*Route::resource('patients', DoctorController::class)->missing(function (Request $request) {
-        return Redirect::route('doctor.index');
-    });
-    */
+
     Route::prefix('doctor')->group(function () {
         Route::get('/dashboard', [DoctorController::class, 'dashboard'])->name('doctor.dashboard');
 
