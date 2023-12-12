@@ -26,3 +26,4 @@ yarn-error.log
 docker-compose.yml
 Dockerfile
 /ignore_analysis
+a_*.config

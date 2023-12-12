@@ -1,0 +1,2 @@
+-Create a AWS EBS with PHP ^8.1.x and a MySQL ^8.x database attached
+-Upload zip file
