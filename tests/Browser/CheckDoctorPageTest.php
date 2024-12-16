@@ -26,7 +26,9 @@ class CheckDoctorPageTest extends DuskTestCase
     public function testDashboardPage(): void
     {
         $this->browse(callback: function (Browser $browser) {
-            $browser->visit('/')
+
+            $browser->maximize()
+                ->visit('/')
                 //->waitForLocation('/')
                 ->clickLink('Log in')
                 ->type('email', 'doctor@gmail.com')
@@ -34,7 +36,7 @@ class CheckDoctorPageTest extends DuskTestCase
                 ->click('button[type="submit"]')
                 ->assertSee('Welcome Doctor!');
 
-
+            $browser->maximize();
             $browser->click('@span-patients')
                 ->waitForText('PATIENT RECORDS')
                 ->assertSee('PATIENT RECORDS')
@@ -48,12 +50,15 @@ class CheckDoctorPageTest extends DuskTestCase
                 ->type('address', 'Final de calle')
                 ->type('city', 'Dublin')
                 ->type('state', 'Dublin')
-                ->type('zip_code', 'D08K333')
-                ->press('@btn-create-patient')
-                ->pause(1000);
+                ->type('zip_code', 'D08K333');
+
+
+                $browser->script('window.scrollTo(0,document.body.scrollHeight)');
+                $browser->press('@btn-create-patient');
 
             $browser->type('input[type="search"]','Noyola')
                 ->assertSee('Sanchez');
+
 
         });
     }
