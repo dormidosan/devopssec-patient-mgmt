@@ -90,8 +90,8 @@ jobs:
           SONAR_TOKEN: ${{ secrets.SONARCLOUD_TOKEN }}
       #Start automated tests
       - name: Upgrade Chrome Driver
-        # run: php artisan dusk:chrome-driver --detect
-        run: php artisan dusk:chrome-driver 126
+        run: php artisan dusk:chrome-driver --detect
+        # run: php artisan dusk:chrome-driver 126
       - name: List what is in the directory
         run: ls -l ./vendor/laravel/dusk/bin
       - name: Start Chrome Driver
