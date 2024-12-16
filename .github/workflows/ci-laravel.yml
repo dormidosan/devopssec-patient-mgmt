@@ -16,7 +16,7 @@ jobs:
       DB_PASSWORD: secret
       MAIL_MAILER: log
       ACTIONS_STEP_DEBUG: true
-      DUSK_HEADLESS_DISABLED: false
+      # DUSK_HEADLESS_DISABLED: false if isset to false or true headless will be disabled
 
     services:
       mysql:
@@ -92,7 +92,8 @@ jobs:
       #Start automated tests
       - name: Upgrade Chrome Driver
         run: php artisan dusk:chrome-driver --detect
-        #run: php artisan dusk:chrome-driver 126
+        #run: php artisan dusk:chrome-driver 127
+        # chrome-driver 128 runs on a different port every time is started
       - name: List what is in the directory
         run: ls -l ./vendor/laravel/dusk/bin
       - name: Start Chrome Driver
