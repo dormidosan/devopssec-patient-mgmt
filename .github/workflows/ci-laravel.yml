@@ -93,7 +93,7 @@ jobs:
         # run: php artisan dusk:chrome-driver --detect
         run: php artisan dusk:chrome-driver 126
       - name: List what is in the directory
-        run: ls -a
+        run: ls -l ./vendor/laravel/dusk/bin
       - name: Start Chrome Driver
         run: ./vendor/laravel/dusk/bin/chromedriver-linux &
       - name: Run Laravel Server
