@@ -95,7 +95,7 @@ jobs:
       - name: List what is in the directory
         run: ls -l ./vendor/laravel/dusk/bin
       - name: Start Chrome Driver
-        run: ./vendor/laravel/dusk/bin/chromedriver-linux &
+        run: ./vendor/laravel/dusk/bin/chromedriver-linux64 &
       - name: Run Laravel Server
         run: php artisan serve --no-reload &
       - name: Run Dusk Tests
