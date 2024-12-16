@@ -39,7 +39,7 @@ abstract class DuskTestCase extends BaseTestCase
                 function (Collection $items) { return $items->merge([
                     //'--disable-gpu',
                     //'--headless=new',
-                    'headless'
+                    //'headless'
                 ]);
             })->all());
 
