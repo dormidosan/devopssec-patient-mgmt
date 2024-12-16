@@ -96,6 +96,8 @@ jobs:
         run: ls -l ./vendor/laravel/dusk/bin
       - name: Start Chrome Driver
         run: ./vendor/laravel/dusk/bin/chromedriver-linux &
+      - name: Debug active ports
+        run: netstat -tuln &
       - name: Run Laravel Server
         run: php artisan serve --no-reload &
       - name: Run Dusk Tests
